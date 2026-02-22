@@ -1,3 +1,30 @@
+/*
+===============================================================================
+DDL Script: Create Bronze Tables
+
+Purpose: This script creates all tables in the 'bronze' schema for the initial
+         data ingestion layer of the data warehouse. It drops existing tables
+         (if they exist) and recreates them with the appropriate schema 
+         structure to match the source CSV files from CRM and ERP systems.
+
+Source Systems:
+         1. CRM System - Customer, Product, and Sales data
+         2. ERP System - Customer, Location, and Product Category data
+
+Tables Created:
+         - bronze.crm_cust_info: Customer master data from CRM
+         - bronze.crm_prd_info: Product master data from CRM
+         - bronze.crm_sales_details: Sales transaction data from CRM
+         - bronze.erp_cust_az12: Customer data from ERP
+         - bronze.erp_loc_a101: Location data from ERP
+         - bronze.erp_px_cat_g1v2: Product category data from ERP
+
+Usage Example:
+         Run this script once to set up the Bronze layer tables before
+         executing the bronze.load_bronze stored procedure.
+===============================================================================
+*/
+
 -- TABLE CREATION FROM THE SOURCE CRM DATASET
 
 IF OBJECT_ID ('bronze.crm_cust_info' , 'U') IS NOT NULL

@@ -1,3 +1,31 @@
+/*
+===============================================================================
+Database Creation and Setup Script
+
+Purpose: This script performs the initial setup of the DataWarehouse database.
+         It checks for an existing database with the same name and if found,
+         forces all connections to close and drops the database before 
+         creating a fresh one with the required schemas.
+
+Database: DataWarehouse
+
+Schemas Created:
+         - bronze: Raw data ingestion layer (staging area)
+         - silver: Cleaned and transformed data layer
+         - gold: Business-ready data mart layer
+
+Safety Features:
+         - Checks for existing database before dropping
+         - Forces disconnection of all active users with ROLLBACK
+         - Uses GO statements to ensure batch separation
+
+Usage Example:
+         Run this script once at the beginning of the project to set up
+         the database environment. All subsequent ETL processes will
+         reference this database.
+===============================================================================
+*/
+
 USE master;
 GO
 
