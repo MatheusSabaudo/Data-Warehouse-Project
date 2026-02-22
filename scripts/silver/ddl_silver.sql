@@ -1,27 +1,34 @@
 /*
 ===============================================================================
-DDL Script: Create Bronze Tables
+DDL Script: Create Silver Tables
 
-Purpose: This script creates all tables in the 'silver' schema for the initial
-         data ingestion layer of the data warehouse. It drops existing tables
+Purpose: This script creates all tables in the 'silver' schema for the cleaned
+         and transformed layer of the data warehouse. It drops existing tables
          (if they exist) and recreates them with the appropriate schema 
-         structure to match the source CSV files from CRM and ERP systems.
+         structure. The silver layer represents data that has been cleansed,
+         standardized, and enriched from the bronze layer.
 
-Source Systems:
+Source Systems (via Bronze Layer):
          1. CRM System - Customer, Product, and Sales data
          2. ERP System - Customer, Location, and Product Category data
 
+Key Features:
+         - Includes data quality checks and transformations from bronze to silver
+         - Adds audit column (dwh_create_date) to track when records were loaded
+         - Maintains consistent data types and formats
+         - Prepares data for business logic implementation in gold layer
+
 Tables Created:
-         - silver.crm_cust_info: Customer master data from CRM
-         - silver.crm_prd_info: Product master data from CRM
-         - silver.crm_sales_details: Sales transaction data from CRM
-         - silver.erp_cust_az12: Customer data from ERP
-         - silver.erp_loc_a101: Location data from ERP
-         - silver.erp_px_cat_g1v2: Product category data from ERP
+         - silver.crm_cust_info: Cleaned customer master data from CRM
+         - silver.crm_prd_info: Cleaned product master data from CRM
+         - silver.crm_sales_details: Cleaned sales transaction data from CRM
+         - silver.erp_cust_az12: Cleaned customer data from ERP
+         - silver.erp_loc_a101: Cleaned location data from ERP
+         - silver.erp_px_cat_g1v2: Cleaned product category data from ERP
 
 Usage Example:
-         Run this script once to set up the Bronze layer tables before
-         executing the silver.load_bronze stored procedure.
+         Run this script once to set up the Silver layer tables before
+         executing the silver.load_silver stored procedure.
 ===============================================================================
 */
 
@@ -61,10 +68,10 @@ IF OBJECT_ID ('silver.crm_sales_details' , 'U') IS NOT NULL
 CREATE TABLE silver.crm_sales_details (
 	sls_ord_num NVARCHAR(50),
 	sls_prd_key NVARCHAR(50),
-	sls_cust_idN INT,
-	sls_order_dt INT,
-	sls_ship_dt INT,
-	sls_due_dt INT,
+	sls_cust_id INT,
+	sls_order_dt DATE,
+	sls_ship_dt DATE,
+	sls_due_dt DATE,
 	sls_sales INT,
 	sls_quantity INT,
 	sls_price INT,
