@@ -77,11 +77,11 @@ ORDER BY cst_gndr;
 
 -- Validate marital status values are standardized (optional check)
 SELECT DISTINCT 
-    cst_material_status AS marital_status_values,
+    cst_marital_status AS marital_status_values,
     COUNT(*) AS record_count
 FROM silver.crm_cust_info
-GROUP BY cst_material_status
-ORDER BY cst_material_status;
+GROUP BY cst_marital_status
+ORDER BY cst_marital_status;
 
 -- =============================================================================
 -- CHECK 4: Summary Statistics
