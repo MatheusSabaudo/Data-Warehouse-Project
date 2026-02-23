@@ -54,7 +54,7 @@ SELECT
     prd_nm,
     prd_cost,
     prd_line
-FROM bronze.crm_prd_info
+FROM silver.crm_prd_info
 WHERE prd_cost < 0 OR prd_cost IS NULL
 ORDER BY prd_cost;
 
@@ -65,7 +65,7 @@ ORDER BY prd_cost;
 SELECT DISTINCT 
     prd_line AS product_line_values,
     COUNT(*) AS record_count
-FROM bronze.crm_prd_info
+FROM silver.crm_prd_info
 GROUP BY prd_line
 ORDER BY prd_line;
 
@@ -79,7 +79,7 @@ SELECT
     prd_start_dt,
     prd_end_dt,
     DATEDIFF(day, prd_start_dt, prd_end_dt) AS days_difference
-FROM bronze.crm_prd_info
+FROM silver.crm_prd_info
 WHERE prd_end_dt < prd_start_dt
 ORDER BY prd_start_dt;
 
@@ -91,19 +91,19 @@ ORDER BY prd_start_dt;
 SELECT 
     'NULL Product Names' AS check_type,
     COUNT(*) AS record_count
-FROM bronze.crm_prd_info
+FROM silver.crm_prd_info
 WHERE prd_nm IS NULL
 UNION ALL
 SELECT 
     'NULL Product Keys',
     COUNT(*)
-FROM bronze.crm_prd_info
+FROM silver.crm_prd_info
 WHERE prd_key IS NULL
 UNION ALL
 SELECT 
     'NULL Start Dates',
     COUNT(*)
-FROM bronze.crm_prd_info
+FROM silver.crm_prd_info
 WHERE prd_start_dt IS NULL;
 
 -- Check for future start dates
@@ -111,7 +111,7 @@ SELECT
     prd_id,
     prd_nm,
     prd_start_dt
-FROM bronze.crm_prd_info
+FROM silver.crm_prd_info
 WHERE prd_start_dt > GETDATE()
 ORDER BY prd_start_dt;
 
@@ -127,11 +127,11 @@ SELECT
     MIN(prd_cost) AS min_cost,
     MAX(prd_cost) AS max_cost,
     AVG(prd_cost) AS avg_cost
-FROM bronze.crm_prd_info
+FROM silver.crm_prd_info
 GROUP BY prd_line
 ORDER BY prd_line;
 
 -- Sample of data for review
 SELECT TOP 20 *
-FROM bronze.crm_prd_info
+FROM silver.crm_prd_info
 ORDER BY prd_id, prd_start_dt;
