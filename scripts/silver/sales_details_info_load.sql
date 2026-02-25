@@ -15,6 +15,8 @@ Target Table: silver.crm_sales_details
 ===============================================================================
 */
 
+TRUNCATE TABLE silver.crm_sales_details;
+
 INSERT INTO silver.crm_sales_details (
 	sls_ord_num,
 	sls_prd_key,

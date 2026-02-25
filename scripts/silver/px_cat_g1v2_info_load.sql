@@ -18,6 +18,8 @@ Note: This is a reference/lookup table with clean data, so only minimal
 ===============================================================================
 */
 
+TRUNCATE TABLE silver.erp_px_cat_g1v2;
+
 INSERT INTO silver.erp_px_cat_g1v2 (
     id, 
     cat, 

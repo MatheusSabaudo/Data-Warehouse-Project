@@ -18,6 +18,8 @@ Target Table: silver.erp_cust_az12
 ===============================================================================
 */
 
+TRUNCATE TABLE silver.erp_cust_az12;
+
 INSERT INTO silver.erp_cust_az12 (
     cid, 
     bdate, 

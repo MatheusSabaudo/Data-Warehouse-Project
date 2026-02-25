@@ -22,6 +22,7 @@ Usage Example:
          Run this as part of the silver.load_silver stored procedure
 ===============================================================================
 */
+TRUNCATE TABLE silver.crm_prd_info;
 
 INSERT INTO silver.crm_prd_info (
 	prd_id,
