@@ -107,11 +107,11 @@ This project follows a typical **Data Warehouse architecture**:
 
 By exploring this repository you will gain understanding of:
 
-- ✔ ETL pipelines and data ingestion
-- ✔ Data warehouse schema design
-- ✔ SQL scripting and automation
-- ✔ Data quality testing and validation
-- ✔ Documentation of technical workflows
+* ✔ ETL pipelines and data ingestion
+* ✔ Data warehouse schema design
+* ✔ SQL scripting and automation
+* ✔ Data quality testing and validation
+* ✔ Documentation of technical workflows
 
 ## 📖 Contributing
 
@@ -126,5 +126,3 @@ Just **fork**, make your changes, and submit a pull request.
 ## 📜 License
 
 This repository uses an open‑source license.
-
-
