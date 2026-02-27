@@ -125,4 +125,5 @@ Just **fork**, make your changes, and submit a pull request.
 
 ## 📜 License
 
-This repository uses an open‑source license (add license name here if present).
+This repository uses an open‑source license.
+
